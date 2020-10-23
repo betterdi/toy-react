@@ -41,7 +41,7 @@ export function createElement(type, attributes, ...children) {
   if (typeof type === 'string') {
     e = new ElementWrapper(type);
   } else {
-    e = new type;
+    e = new type();
   }
   for (let p in attributes) {
     e.setAttribute(p, attributes[p]);
@@ -54,7 +54,7 @@ export function createElement(type, attributes, ...children) {
       if (typeof child === 'object' && child instanceof Array) {
         insertChildren(child);
       } else {
-        e.appendChild(children);
+        e.appendChild(child);
       }
     }
   };
